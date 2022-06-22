@@ -119,6 +119,8 @@ class EmscriptenModule extends Module {
         for (dynamic entry in entries) {
           if (entry is List) {
             Object value = entry.last;
+            //String type = value.runtimeType.toString();
+            //print(type);
             if (value is int) {
               Global g =
                   new Global(address: value, name: entry.first as String);
@@ -149,8 +151,8 @@ class EmscriptenModule extends Module {
                 free = description.function as _Free;
               }
             } else {
-              throw new StateError(
-                  'Unexpected value in entry list! Entry is $entry, value is $value (of type ${value.runtimeType})');
+              // throw new StateError(
+              //     'Unexpected value in entry list! Entry is $entry, value is $value (of type ${value.runtimeType})');
             }
           } else {
             throw new StateError(

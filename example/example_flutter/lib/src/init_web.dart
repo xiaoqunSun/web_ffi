@@ -22,15 +22,15 @@ Future<void> initFfi() async {
     // registerOpaqueType<MyOpaque>();
 
     // Inject the JavaScript into our page
-    await Js.importLibrary('$_basePath/libopus.js');
+    await Js.importLibrary('$_basePath/algorithm.js');
 
     // Load the WebAssembly binaries from assets
-    String path = '$_basePath/libopus.wasm';
+    String path = '$_basePath/algorithm.wasm';
     Uint8List wasmBinaries = (await rootBundle.load(path)).buffer.asUint8List();
 
     // After we loaded the wasm binaries and injected the js code
     // into our webpage, we obtain a module
-    _module = await EmscriptenModule.compile(wasmBinaries, 'libopus');
+    _module = await EmscriptenModule.compile(wasmBinaries, 'algorithm');
   }
 }
 

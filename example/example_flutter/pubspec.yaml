@@ -15,5 +15,7 @@ dependencies:
 
 flutter:
   assets:
-    - assets/libopus.js
+    - assets/algorithm.wasm
+    - assets/algorithm.js
     - assets/libopus.wasm
+    - assets/libopus.js

@@ -34,7 +34,7 @@ Future<void> initFfi() async {
   }
 }
 
-DynamicLibrary openOpus() {
+DynamicLibrary openAlgorithm() {
   Module? m = _module;
   if (m != null) {
     return new DynamicLibrary.fromModule(m);

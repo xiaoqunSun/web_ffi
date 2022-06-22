@@ -6,9 +6,9 @@ import 'package:web_ffi/web_ffi_modules.dart';
 
 Future<String> testFFI() async {
     await initFfi();
-    DynamicLibrary dynLib = openOpus();
-    FunctionsAndGlobals opusLibinfo = FunctionsAndGlobals(dynLib);
-    String version = fromCString(opusLibinfo.get_version());
+    DynamicLibrary dynLib = openAlgorithm();
+    FunctionsAndGlobals algorithm = FunctionsAndGlobals(dynLib);
+    String version = fromCString(algorithm.get_version());
 
     Pointer<Double>? p = Memory.global?.allocate<Double>(16);
     p![0] = 471.20001220703125;
@@ -29,7 +29,7 @@ Future<String> testFFI() async {
     p[14] = 698.4000244140625;
     p[15] = 868.2000122070312;
 
-    Pointer<Double> intersections = opusLibinfo.bezier_intersect(p);
+    Pointer<Double> intersections = algorithm.bezier_intersect(p);
     int index = 0;
 
     while(intersections.elementAt(index).value > -1.0)
@@ -41,7 +41,7 @@ Future<String> testFFI() async {
     }
     Memory.global?.free(p);
 
-    opusLibinfo.free_pointer(Pointer<Void>.fromAddress(intersections.address));
+    algorithm.free_pointer(Pointer<Void>.fromAddress(intersections.address));
     return version;
 }
 Future<void> main() async {
